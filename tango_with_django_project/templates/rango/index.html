@@ -8,7 +8,11 @@
 {% block body_block %}
 <h1>Rango says...</h1>
 <div>
-    hey there partner! 
+    {% if user.is_authenticated %}
+        howdy {{user.username}}!
+    {% else %}
+        hey there partner!
+    {% endif %}
     <strong>{{ boldmessage }}</strong><br />
 </div>
 
@@ -31,6 +35,7 @@
         <ul>
         {% for page in pages %}
             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            
         {% endfor %}
         </ul>
 {% else %}
